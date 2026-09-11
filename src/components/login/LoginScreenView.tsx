@@ -195,7 +195,7 @@ export default function LoginScreenView(props: LoginScreenViewProps) {
       : isFantasyRpg || yamatoLoginSkin
       ? // Top-anchored (Kayıt won't recentre). With clan rails: COLUMN so title stays on top.
         showYamatoClanRails
-          ? "relative z-10 flex w-full min-h-full flex-col items-center overflow-y-auto px-2 pt-3 pb-16 sm:px-4"
+          ? "relative z-10 flex h-dvh max-h-dvh w-full flex-col items-center overflow-hidden px-2 pt-1 pb-2 sm:px-4"
           : "relative z-10 flex min-h-full items-start justify-center overflow-y-auto px-4 pb-16"
       : "relative z-10 flex min-h-full items-center justify-center p-4";
 
@@ -224,10 +224,10 @@ export default function LoginScreenView(props: LoginScreenViewProps) {
                 width: card.widthPx ? `${card.widthPx}px` : undefined,
                 boxSizing: "border-box",
                 // Top pad clears Yamato ornate header so GİRİŞ/KAYIT aren't sunk into the rim.
-                paddingTop: 52,
-                paddingBottom: 28,
-                paddingLeft: 32,
-                paddingRight: 32,
+                paddingTop: 44,
+                paddingBottom: 18,
+                paddingLeft: 28,
+                paddingRight: 28,
               }
           : {}),
       };
@@ -311,8 +311,8 @@ export default function LoginScreenView(props: LoginScreenViewProps) {
         {/* Title above; clan rails hug the login card only (yan yana). */}
         {showYamatoClanRails && !isBottomBar ? (
           <div
-            className="relative z-20 mb-4 w-full shrink-0 text-center"
-            style={{ paddingTop: "min(2vh, 16px)" }}
+            className="relative z-20 mb-1 w-full shrink-0 text-center"
+            style={{ paddingTop: "min(0.8vh, 8px)" }}
           >
             {brandBlock}
           </div>

@@ -123,9 +123,11 @@ function ClanPortraitCard({
   return (
     <button
       type="button"
-      className="login-clan-card group relative flex w-[200px] shrink-0 flex-col overflow-hidden rounded-md text-left outline-none transition-[box-shadow,border-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-[#e0b23a]/70"
+      className="login-clan-card group relative flex w-[clamp(118px,15.5vw,160px)] shrink-0 flex-col overflow-hidden rounded-md text-left outline-none transition-[box-shadow,border-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-[#e0b23a]/70"
       style={{
         aspectRatio: "3 / 4",
+        maxHeight: "min(32dvh, 210px)",
+        height: "auto",
         border: live
           ? "1px solid rgba(224,178,58,0.65)"
           : "1px solid rgba(139,105,55,0.45)",
@@ -396,7 +398,7 @@ function ClanRailColumn({
 }) {
   return (
     <aside
-      className="hidden min-[1000px]:flex w-[200px] shrink-0 flex-col items-stretch justify-center gap-2 self-stretch"
+      className="hidden min-[1000px]:flex w-[clamp(118px,15.5vw,160px)] shrink-0 flex-col items-stretch justify-center gap-1.5 self-center"
       aria-label={label}
     >
       {clans.map((clan) => (
@@ -439,7 +441,7 @@ export default function LoginClanRails({
 
   return (
     <>
-      <div className="flex w-full max-w-[1600px] items-center justify-center gap-1 min-[1000px]:gap-1.5">
+      <div className="flex min-h-0 w-full max-w-[1600px] flex-1 items-center justify-center gap-1 min-[1000px]:gap-1.5">
         <ClanRailColumn
           clans={LEFT_CLANS}
           label="Klanlar — sol"
