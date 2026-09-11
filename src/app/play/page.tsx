@@ -9,8 +9,16 @@ import nextDynamic from "next/dynamic";
 const PlayPageClient = nextDynamic(() => import("./PlayPageClient"), {
   ssr: false,
   loading: () => (
-    <div className="min-h-screen bg-[#080c14] flex items-center justify-center text-slate-300 text-sm">
-      Dünya yükleniyor…
+    <div
+      className="min-h-screen flex flex-col items-center justify-center gap-2"
+      style={{ background: "#080c14", color: "#e8d5a3" }}
+    >
+      <div className="font-display text-lg tracking-[0.2em] uppercase" style={{ color: "#c9a227" }}>
+        Klan Savaşları
+      </div>
+      <div className="text-sm" style={{ color: "#94a3b8" }}>
+        Dünyaya bağlanılıyor…
+      </div>
     </div>
   ),
 });

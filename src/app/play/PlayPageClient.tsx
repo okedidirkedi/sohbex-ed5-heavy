@@ -219,8 +219,8 @@ function deriveGameServerHttpUrl(wsUrl: string): string {
  */
 function characterSelectHref(): string {
   if (typeof window === "undefined") return "/cc";
-  const isGuestEntry = new URLSearchParams(window.location.search).get("guest") === "true";
-  return isGuestEntry ? "/cc?guest=true" : "/cc";
+  // SohbeX: never bounce back into guest CC.
+  return "/cc";
 }
 
 const CHUNK_REQUEST_INTERVAL_MS = 2000; // Re-check chunk needs every 2s
@@ -1340,9 +1340,69 @@ export default function PlayPage() {
             });
         }
 
+        // SohbeX: authenticate BEFORE Pixi/WebGL so unauthenticated boots
+        // never allocate a GPU context (Aw Snap / Wine OOM risk).
+        if (!dryRun) {
+          const params = new URLSearchParams(window.location.search);
+          if (params.get("guest") === "true") {
+            window.location.replace("/login");
+            return;
+          }
+          let earlyToken = "";
+          try {
+            earlyToken =
+              localStorage.getItem(`${GameConfig.localStoragePrefix}:local-auth-token`) || "";
+          } catch {
+            /* ignore */
+          }
+          if (!earlyToken) {
+            try {
+              await loadAuthConfig();
+              const supabase = createClient();
+              if (supabase) {
+                const { data } = await supabase.auth.getSession();
+                if (data?.session?.access_token) earlyToken = data.session.access_token;
+              }
+            } catch {
+              /* ignore */
+            }
+          }
+          if (!earlyToken) {
+            window.location.replace("/login");
+            return;
+          }
+        }
+        try {
+          // Soft-cap DPR for Wine/ED5 stability (Heavy Aw Snap guidance).
+          (window as unknown as { __ed5DprCap?: number }).__ed5DprCap = Math.min(
+            window.devicePixelRatio || 1,
+            1.25,
+          );
+        } catch {
+          /* ignore */
+        }
+
         // 1. Create engine
         const engine = new GameEngine();
         await engine.init(canvasRef.current!);
+        try {
+          const canvas = canvasRef.current;
+          if (canvas) {
+            canvas.addEventListener(
+              "webglcontextlost",
+              (ev) => {
+                ev.preventDefault();
+                setError(
+                  "Grafik bağlamı kayboldu (WebGL). Sayfayı yenile veya Dünyaya Gir’i tekrar dene.",
+                );
+                setLoading(false);
+              },
+              { once: false },
+            );
+          }
+        } catch {
+          /* ignore */
+        }
         if (destroyed) {
           engine.destroy();
           return;
@@ -3698,7 +3758,7 @@ export default function PlayPage() {
   // Above this footprint we fall back to viewport streaming: the engine's
   // movement-driven requestChunks + cullDistantChunks keep memory bounded, and
   // the rest of the map streams in as the player moves.
-  const MAX_EAGER_ZONE_CHUNKS = 36; // ~6x6 — comfortably within the cull window
+  const MAX_EAGER_ZONE_CHUNKS = 16; // SohbeX/Wine: lower eager load to reduce Aw Snap OOM
 
   // Request ALL zone chunks so the minimap shows the full map immediately.
   // Bounded: huge zones stream via the viewport instead of loading all at once.

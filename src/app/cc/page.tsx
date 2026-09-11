@@ -793,7 +793,8 @@ function CcPageInner() {
   // never read either. When there's no token but this browser does hold guest
   // characters, treat the session as a guest one instead of showing "no heroes".
   const [guestFallback, setGuestFallback] = useState(false);
-  const isGuest = urlGuest || guestFallback;
+  // SohbeX: guest sessions forbidden — never treat as guest even if storage has leftovers.
+  const isGuest = false;
 
   const [characters, setCharacters] = useState<CharacterSummary[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
