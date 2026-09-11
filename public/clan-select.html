@@ -101,7 +101,7 @@ if(selected) document.getElementById('confirm').disabled=false;
 document.getElementById('confirm').onclick=()=>{
   const c=CLANS.find(x=>x.id===selected); if(!c) return;
   localStorage.setItem(KEY, JSON.stringify({...c, chosenAt:new Date().toISOString()}));
-  const next=guest?'/cc?guest=true':'/cc';
+  const next='/cc';
   location.href=(location.protocol==='file:'?'http://127.0.0.1:3000':'')+next;
 };
 document.getElementById('back').onclick=()=>{location.href=location.protocol==='file:'?'http://127.0.0.1:3000/login':'/login'};

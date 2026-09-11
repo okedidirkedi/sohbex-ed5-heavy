@@ -58,8 +58,6 @@ const SOHBEX_YAMATO_LOGIN: LoginScreenConfig = {
     signUpLabel: "Hesap Oluştur",
     emailLabel: "E-posta",
     passwordLabel: "Şifre",
-    guestLabel: "Misafir olarak devam et",
-    guestNote: "Klan seçimine geçersin · ilerleme bu cihazda kalır",
   },
   visibility: { showGuest: false, showRememberMe: true, showRegisterTab: true, showVersion: false },
   applyToCharacterSelect: true,
