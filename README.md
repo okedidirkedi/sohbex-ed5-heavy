@@ -1,23 +1,26 @@
-# SohbeX / Klan Savaşları — ED5 client pack (private)
+# SohbeX / Klan Savaşları — ED5 Heavy bridge
 
-Grok Heavy (Ağır) için: bu repo Wine ED5 `apps/client` kaynağından kesilmiş canlı dosyaları içerir.
-İşlemleri **Heavy** yapsın; patch/PR buraya. Grok Bot sadece köprü.
+**Grok Heavy (grok.com Ağır) bu repoya bağlıdır.** Kod işi buradan; Grok Bot sadece Wine ED5’e uygular.
 
-## Runtime (box)
+- Repo: https://github.com/okedidirkedi/sohbex-ed5-heavy
+- Heavy sohbet: https://grok.com/c/185287e9-d1c2-4899-88d5-9c2e74c7ed6a
+- Handoff: `docs/HANDOFF.md`
+
+## Durum (2026-09-11)
+- PR #2 **MERGED** (Login→clan→/cc→/play + Aw Snap mitigations) — Wine `apps/client`’a da uygulandı.
+- Guest yasak · Yamato gold · cyan yok · Metin2/KO sadece tür hissi · orijinal IP.
+
+## Heavy nasıl çalışır
+1. Bu repoyu kaynak al (clone / raw / zip).
+2. Branch aç → değişiklik → mümkünse PR; yazma yoksa **unified diff + tam dosya** ver.
+3. Bitince PR URL veya diff’i yaz; Bot Wine’a taşır.
+4. Screenshot isteme. HUD rewrite ayrı iş (şimdi değil).
+
+## Sıradaki
+1. Enter-world doğrulama: Login → klan → `/cc` → Dünyaya Gir (`/play`).
+2. Aw Snap kalırsa ek mitigasyon (OOM / WS / token / Pixi).
+3. Sonra HUD Yamato polish (ayrı PR).
+
+## Runtime (Bot box — Heavy doğrudan erişemez)
 - Next `http://127.0.0.1:3000`
-- game-server `http://127.0.0.1:3001` local JWT
-- Guest yasak · pnpm · Metin2/KO sadece tür hissi · Yamato gold (cyan icat etme)
-
-## Görev
-1. Login → `/clan-select.html` → `/cc` → `/play` (auth)
-2. Aw Snap: Pixi auth-önce, chunk eager azalt, WebGL contextlost
-3. Guest path temizliği
-4. HUD rewrite YOK (ayrı iş)
-
-## Paths in this repo
-- `src/app/login/page.tsx`
-- `src/components/login/*`
-- `src/app/cc/page.tsx`
-- `src/app/play/page.tsx` + `PlayPageClient.tsx`
-- `public/clan-select.html`
-- `docs/HANDOFF.md`
+- game-server `http://127.0.0.1:3001` local JWT / PGlite
