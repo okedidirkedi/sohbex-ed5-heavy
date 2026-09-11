@@ -30,8 +30,8 @@ const SOHBEX_YAMATO_LOGIN: LoginScreenConfig = {
   backdrop: {
     kind: "image",
     image: { mediaSrc: "/ui/yamato/login-background.png", mode: "cover" },
-    particles: true,
-    overlayOpacity: 0.42,
+    particles: false,
+    overlayOpacity: 0.18,
     blurPx: 0,
   },
   brand: {
