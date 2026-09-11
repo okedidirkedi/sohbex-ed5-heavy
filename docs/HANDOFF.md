@@ -18,15 +18,17 @@ Türkçe yanıt ver. Production kalite; placeholder/demo yok. Screenshot isteme.
 2. `/play` SSR Pixi fix → thin `page.tsx` + `PlayPageClient.tsx` (`ssr:false`).
 3. CC Live Generator / HUMAN·ADULT debug kaldırıldı.
 4. **PR #2 merged + Wine uygulandı:** clan-select her zaman `/cc` (guest query yok); `cc` `isGuest=false`; login guest copy temiz; play splash; auth **önce** `engine.init`; guest URL → `/login`; DPR soft-cap 1.25; `webglcontextlost`; `MAX_EAGER_ZONE_CHUNKS` 36→16.
+5. **`src/lib/sohbex-clan.ts` eklendi** — `/cc` `readSelectedClan` import’u artık source of truth’ta. Taner live Next `/cc` module-not-found 500 kapandı (client dosyası + pack bridge backfill). Guest yasak duruyor.
 
 ## Sıradaki (şimdi)
-1. Enter-world E2E teşhis/fix (Aw Snap kalırsa).
+1. Enter-world E2E teşhis/fix — auth path hâlâ gerekli (Aw Snap kalırsa).
 2. Sonra HUD Yamato polish (ayrı PR).
 
 ## Önemli dosyalar
 - `src/app/login/page.tsx`
 - `src/components/login/LoginScreenView.tsx`
 - `src/app/cc/page.tsx`
+- `src/lib/sohbex-clan.ts`
 - `src/app/play/page.tsx` + `PlayPageClient.tsx`
 - `public/clan-select.html`
 
