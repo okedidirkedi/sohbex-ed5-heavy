@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SohbeX — Klan Seçimi</title>
+<style>
+:root{--bg:#050912;--text:#f3f6ff;--muted:#a9b7d6;--gold:#e0b23a;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;height:100dvh;max-height:100dvh;overflow:hidden;color:var(--text);font-family:Inter,system-ui,sans-serif;background:
+radial-gradient(1200px 600px at 15% -10%,rgba(224,178,58,.14),transparent 55%),
+radial-gradient(900px 500px at 90% 110%,rgba(60,110,255,.12),transparent 50%),var(--bg)}
+.page{max-width:1280px;height:100%;height:100dvh;max-height:100dvh;margin:0 auto;padding:14px 20px 12px;display:flex;flex-direction:column;box-sizing:border-box;overflow:hidden}
+.brand{font-family:Cinzel,Georgia,serif;letter-spacing:.12em;color:var(--gold);font-size:.85rem}
+h1{margin:4px 0 12px;font-family:Cinzel,Georgia,serif;font-size:clamp(1.4rem,2.6vw,2rem)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;flex:1;min-height:0;align-content:stretch}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.card{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;background:#0b1220;height:100%;min-height:0;isolation:isolate;transition:box-shadow .25s ease,border-color .25s ease}
+.card:hover,.card.selected{border-color:rgba(224,178,58,.55);box-shadow:0 18px 48px rgba(0,0,0,.45),0 0 0 1px rgba(224,178,58,.25)}
+.stage{position:absolute;inset:0;overflow:hidden;background:#070d18}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;transform:none!important}
+.stage .anim{opacity:0;transition:opacity .2s ease}
+.card:hover .anim,.card.selected .anim,.card.is-live .anim{opacity:1}
+.card:hover .still,.card.selected .still,.card.is-live .still{opacity:0}
+.veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,18,.05) 20%,rgba(5,9,18,.55) 62%,rgba(5,9,18,.96) 100%);pointer-events:none;z-index:2}
+.body{position:absolute;left:0;right:0;bottom:0;padding:12px 12px 12px;z-index:3}
+.tag{display:inline-block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(224,178,58,.35);border-radius:999px;padding:4px 9px;margin-bottom:8px;background:rgba(0,0,0,.35)}
+.name{font-family:Cinzel,Georgia,serif;font-size:1.15rem;margin:0 0 4px}
+.blurb{margin:0;color:var(--muted);font-size:.82rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:.75rem;color:#dce6ff;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+.actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;flex-shrink:0}
+button{appearance:none;border:0;border-radius:12px;padding:13px 18px;font-weight:700;cursor:pointer;font-size:.95rem}
+.primary{background:linear-gradient(135deg,#e0b23a,#a67910);color:#1a1200;box-shadow:0 10px 28px rgba(224,178,58,.28)}
+.primary:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand">SOHBEX</div>
+  <h1>Klanını seç</h1>
+  <div class="grid" id="grid"></div>
+  <div class="actions">
+    <button class="primary" id="confirm" disabled>Bu klanla devam et</button>
+    <button class="ghost" id="back" type="button">Girişe dön</button>
+  </div>
+</div>
+<script>
+const MEDIA='./clan/media';
+const CLANS=[
+ {id:'kizil-sancak',file:'kizil',pos:'center',name:'Kızıl Sancak',dir:'Doğu',climate:'Kızıl ovalar',focus:'Hücum',blurb:'Sancak sürekli dalgalanır, bulutlar hızlı akar.'},
+ {id:'gumus-bozkir',file:'gumus',pos:'center',name:'Gümüş Bozkır',dir:'Kuzey',climate:'Bozkır gecesi',focus:'Keşif',blurb:'Kurtlar yerinde ulur, yeleler sallanır.'},
+ {id:'mavi-liman',file:'mavi',pos:'center',name:'Mavi Liman',dir:'Batı',climate:'Sahil sisleri',focus:'Ticaret',blurb:'Gemiler yerinde sallanır, deniz hareket eder.'},
+ {id:'demir-vadi',file:'demir',pos:'center center',name:'Demir Vadi',dir:'Güney',climate:'Maden geçitleri',focus:'Savunma',blurb:'Çekiç vurur, kıvılcım ve duman çıkar.'}
+];
+const KEY='sohbex.selectedClan';
+const guest=new URLSearchParams(location.search).get('guest')==='true';
+  // SohbeX: no guest — MMO requires account
+  if(guest){location.replace('/login');}
+let selected=null;
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.id) selected=s.id}catch(e){}
+const grid=document.getElementById('grid');
+function setLive(el,on){
+  if(on){ el.classList.add('is-live'); const g=el.querySelector('.anim'); if(g){ g.src=g.dataset.src; } }
+  else if(el.dataset.id!==selected){ el.classList.remove('is-live'); }
+}
+CLANS.forEach(c=>{
+  const el=document.createElement('article');
+  el.className='card'+(selected===c.id?' selected is-live':'');
+  el.dataset.id=c.id;
+  const gif=`${MEDIA}/gifs/${c.file}-hover.gif`;
+  const pos=c.pos||'center';
+  el.innerHTML=`<div class="stage">
+      <img class="still" src="${MEDIA}/${c.file}-still.png" alt="${c.name}" draggable="false" style="object-position:${pos}"/>
+      <img class="anim" data-src="${gif}" alt="" draggable="false" style="object-position:${pos}"/>
+    </div>
+    <div class="veil"></div>
+    <div class="body">
+      <div class="tag">${c.dir}</div>
+      <h2 class="name">${c.name}</h2>
+      <p class="blurb">${c.blurb}</p>
+      <div class="meta"><span class="chip">${c.climate}</span><span class="chip">${c.focus}</span></div>
+    </div>`;
+  el.addEventListener('mouseenter',()=>setLive(el,true));
+  el.addEventListener('mouseleave',()=>setLive(el,false));
+  el.onclick=()=>{
+    selected=c.id;
+    document.querySelectorAll('.card').forEach(x=>{
+      const on=x.dataset.id===c.id;
+      x.classList.toggle('selected',on);
+      if(on) setLive(x,true); else { x.classList.remove('is-live'); }
+    });
+    document.getElementById('confirm').disabled=false;
+  };
+  grid.appendChild(el);
+  if(selected===c.id) setLive(el,true);
+});
+if(selected) document.getElementById('confirm').disabled=false;
+document.getElementById('confirm').onclick=()=>{
+  const c=CLANS.find(x=>x.id===selected); if(!c) return;
+  localStorage.setItem(KEY, JSON.stringify({...c, chosenAt:new Date().toISOString()}));
+  const next=guest?'/cc?guest=true':'/cc';
+  location.href=(location.protocol==='file:'?'http://127.0.0.1:3000':'')+next;
+};
+document.getElementById('back').onclick=()=>{location.href=location.protocol==='file:'?'http://127.0.0.1:3000/login':'/login'};
+</script>
+</body>
+</html>
