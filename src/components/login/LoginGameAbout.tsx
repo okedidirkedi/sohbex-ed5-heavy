@@ -39,7 +39,7 @@ export default function LoginGameAbout({ enabled }: { enabled: boolean }) {
 
   return (
     <>
-      <div className="mt-2 flex w-full shrink-0 justify-center">
+      <div className="mb-1 mt-1 flex w-full shrink-0 justify-center">
         <button
           type="button"
           onClick={() => setOpen(true)}
