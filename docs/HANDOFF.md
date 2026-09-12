@@ -10,8 +10,9 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 - Handoff (canlı): `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md`
 - Handoff (üst): `T:\PROJEM\HANDOFF-HEAVY.md`
+- DB: PGlite, `DB_MODE=pglite`, klasör `T:\PROJEM\4-krallık\data\` (dosya adı uydurma)
 - Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy (`docs/HANDOFF.md`)
-- Next `:3000` · game-server `:3001` · local JWT · `DB_MODE=pglite` · **pnpm**
+- Next `:3000` · game-server `:3001` · local JWT · **pnpm**
 - Heavy Taner diskine yazamaz. Bot önce canlı HANDOFF-HEAVY.md okur; PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
 - Alt klasör uydurma. `apps\client` yalnızca diskte varsa Next kökü odur.
 
@@ -24,6 +25,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - Kök: `T:\PROJEM\4-krallık\`
 - Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 - Handoff: `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md` (yedek: `T:\PROJEM\HANDOFF-HEAVY.md`)
+- DB: PGlite `data\` (`T:\PROJEM\4-krallık\data\`)
 - **pnpm** (npm install monorepo’da yasak)
 - Guest **yasak**
 
@@ -48,6 +50,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 
 ## Önemli dosyalar (köke göre)
 - `HANDOFF-HEAVY.md`
+- `data\` (PGlite — iç dosya adı uydurma)
 - `src/app/login/page.tsx`
 - `src/components/login/LoginScreenView.tsx`
 - `src/components/login/LoginClanRails.tsx`
