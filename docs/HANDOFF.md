@@ -6,19 +6,19 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 
 ## Kaynak
 - Canlı kutu: **Taner Windows PC** (Wine ED5)
+- Klasör: `T:\PROJEM\4-krallık\`
 - Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy
-- Client kök: `.../@ed5-mmo-studio/studio/engine/apps/client`
 - Next `:3000` · game-server `:3001` · local JWT · `DB_MODE=pglite` · **pnpm**
-- Heavy Taner diskine yazamaz. Bot PR/diff’i Taner `apps/client` altına uygular.
-- Tam Windows path pack’te yok — uydurma.
+- Heavy Taner diskine yazamaz. Bot PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
+- Alt klasör uydurma. `apps\client` yalnızca diskte varsa Next kökü odur.
 
 ## Proje bağlantısı
 - GitHub (public pack): https://github.com/okedidirkedi/sohbex-ed5-heavy
 - Bu sohbet: https://grok.com/c/185287e9-d1c2-4899-88d5-9c2e74c7ed6a
-- Grok Bot köprü: PR/diff → Taner Wine `apps/client`
+- Grok Bot köprü: PR/diff → `T:\PROJEM\4-krallık\`
 
 ## Ortam (Taner — sen doğrudan yazamazsın)
-- Client: `.../@ed5-mmo-studio/studio/engine/apps/client` (Wine ED5)
+- Kök: `T:\PROJEM\4-krallık\`
 - **pnpm** (npm install monorepo’da yasak)
 - Guest **yasak**
 
@@ -36,11 +36,11 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 5. Pack docs + `src/lib/sohbex-clan.ts` → 4 Krallık / `/cc` köprüsü. Kullanıcı yüzü stringleri Bot Taner’da uygular.
 
 ## Sıradaki
-1. Bot: PR #5 + kalan yüzey stringlerini Taner `apps/client` altına uygula, Next restart.
+1. Bot: PR #5 + kalan yüzey stringlerini `T:\PROJEM\4-krallık\` altına uygula, Next restart.
 2. Enter-world E2E teşhis/fix (Aw Snap kalırsa) — Taner runtime.
 3. HUD Yamato polish yalnızca ayrı prompt ile.
 
-## Önemli dosyalar
+## Önemli dosyalar (köke göre)
 - `src/app/login/page.tsx`
 - `src/components/login/LoginScreenView.tsx`
 - `src/components/login/LoginClanRails.tsx`
