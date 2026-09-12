@@ -14,7 +14,7 @@ const PlayPageClient = nextDynamic(() => import("./PlayPageClient"), {
       style={{ background: "#080c14", color: "#e8d5a3" }}
     >
       <div className="font-display text-lg tracking-[0.2em] uppercase" style={{ color: "#c9a227" }}>
-        Klan Savaşları
+        4 Krallık
       </div>
       <div className="text-sm" style={{ color: "#94a3b8" }}>
         Dünyaya bağlanılıyor…
