@@ -6,6 +6,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 
 ## Kaynak
 - Canlı kutu: **Taner Windows PC** (Wine ED5)
+- Canlı site: https://4krallik.com (guest kapalı)
 - Klasör: `T:\PROJEM\4-krallık\`
 - Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 - Handoff (canlı): `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md`
@@ -13,11 +14,12 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - DB: PGlite, `DB_MODE=pglite`, klasör `T:\PROJEM\4-krallık\data\` (dosya adı uydurma)
 - Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy (`docs/HANDOFF.md`)
 - Next `:3000` · game-server `:3001` · local JWT · **pnpm**
-- Heavy Taner diskine yazamaz. Bot önce canlı HANDOFF-HEAVY.md okur; PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
+- Heavy Windows diskine yazamaz. Bot önce canlı HANDOFF-HEAVY.md okur; PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
 - Alt klasör uydurma. `apps\client` yalnızca diskte varsa Next kökü odur.
 
 ## Proje bağlantısı
 - GitHub (public pack): https://github.com/okedidirkedi/sohbex-ed5-heavy
+- Canlı site: https://4krallik.com
 - Bu sohbet: https://grok.com/c/185287e9-d1c2-4899-88d5-9c2e74c7ed6a
 - Grok Bot köprü: PR/diff → `T:\PROJEM\4-krallık\`
 
@@ -27,7 +29,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - Handoff: `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md` (yedek: `T:\PROJEM\HANDOFF-HEAVY.md`)
 - DB: PGlite `data\` (`T:\PROJEM\4-krallık\data\`)
 - **pnpm** (npm install monorepo’da yasak)
-- Guest **yasak**
+- Guest **yasak** (Taner + 4krallik.com)
 
 ## Ürün
 - Ad: **4 Krallık**
@@ -60,6 +62,10 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - `public/clan-select.html`
 - `src/lib/sohbex-clan.ts` (storage key `sohbex.selectedClan` — değiştirme)
 
-## Çıktı formatı
-Branch/PR tercihen. Yazma credential yoksa: dosya yolu + unified diff veya tam dosya içeriği.
+## Çıktı formatı (köprü — zorunlu)
+Heavy Windows diskine yazamaz. Komutta üret:
+1. Net plan
+2. Dosya/tablo
+3. Unified diff veya SQL/JSON
+4. Doğrulama (screenshot yok)
 Cyan icat etme. HUD rewrite şimdi yok.
