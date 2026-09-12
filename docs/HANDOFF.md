@@ -8,9 +8,11 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - Canlı kutu: **Taner Windows PC** (Wine ED5)
 - Klasör: `T:\PROJEM\4-krallık\`
 - Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
-- Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy
+- Handoff (canlı): `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md`
+- Handoff (üst): `T:\PROJEM\HANDOFF-HEAVY.md`
+- Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy (`docs/HANDOFF.md`)
 - Next `:3000` · game-server `:3001` · local JWT · `DB_MODE=pglite` · **pnpm**
-- Heavy Taner diskine yazamaz. Bot PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
+- Heavy Taner diskine yazamaz. Bot önce canlı HANDOFF-HEAVY.md okur; PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
 - Alt klasör uydurma. `apps\client` yalnızca diskte varsa Next kökü odur.
 
 ## Proje bağlantısı
@@ -20,7 +22,8 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 
 ## Ortam (Taner — sen doğrudan yazamazsın)
 - Kök: `T:\PROJEM\4-krallık\`
-- Studio proje: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
+- Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
+- Handoff: `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md` (yedek: `T:\PROJEM\HANDOFF-HEAVY.md`)
 - **pnpm** (npm install monorepo’da yasak)
 - Guest **yasak**
 
@@ -38,12 +41,13 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 5. Pack docs + `src/lib/sohbex-clan.ts` → 4 Krallık / `/cc` köprüsü. Kullanıcı yüzü stringleri Bot Taner’da uygular.
 
 ## Sıradaki
-1. Bot: PR #5 + kalan yüzey stringlerini `T:\PROJEM\4-krallık\` altına uygula, Next restart.
-2. Studio açılışı: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
+1. Bot: canlı `HANDOFF-HEAVY.md` oku; PR #5 + kalan yüzeyi `T:\PROJEM\4-krallık\` altına uygula; Next restart.
+2. Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 3. Enter-world E2E teşhis/fix (Aw Snap kalırsa) — Taner runtime.
 4. HUD Yamato polish yalnızca ayrı prompt ile.
 
 ## Önemli dosyalar (köke göre)
+- `HANDOFF-HEAVY.md`
 - `src/app/login/page.tsx`
 - `src/components/login/LoginScreenView.tsx`
 - `src/components/login/LoginClanRails.tsx`
