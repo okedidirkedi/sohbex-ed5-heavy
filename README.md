@@ -1,4 +1,4 @@
-# SohbeX / Klan Savaşları — ED5 Heavy bridge
+# 4 Krallık — ED5 Heavy köprüsü
 
 **Grok Heavy (grok.com Ağır) bu projeye bağlıdır.**  
 Parez prompt atınca **tüm ED5 ayar ve kod işini Heavy yapar.** Grok Bot sadece Wine’a uygular.
@@ -12,8 +12,9 @@ Parez prompt atınca **tüm ED5 ayar ve kod işini Heavy yapar.** Grok Bot sadec
 | Durum / sıradaki | `docs/HANDOFF.md` |
 
 ## Durum
-- PR #2 **MERGED** + Wine uygulandı.
+- Ürün adı: **4 Krallık** (SohbeX / Klan Savaşları markası yok).
 - Guest yasak · Yamato gold · cyan yok · orijinal IP.
+- PR #2 Wine’da: guest kapalı, auth → `engine.init`, Aw Snap yumuşatmaları.
 
 ## Parez → Heavy
 1. Ağır modelde sohbete yaz.
