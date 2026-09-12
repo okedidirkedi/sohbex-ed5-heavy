@@ -13,17 +13,19 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - Handoff (üst): `T:\PROJEM\HANDOFF-HEAVY.md`
 - DB: PGlite, `DB_MODE=pglite`, klasör `T:\PROJEM\4-krallık\data\` (dosya adı uydurma)
 - Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy (`docs/HANDOFF.md`)
+- Uygulayıcı: **Grok Bot (selam)** — `T:\PROJEM\4-krallık` (Studio/VPS gerekirse)
 - Next `:3000` · game-server `:3001` · local JWT · **pnpm**
 - Heavy Windows diskine yazamaz. Bot önce canlı HANDOFF-HEAVY.md okur; PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
 - Alt klasör uydurma. `apps\client` yalnızca diskte varsa Next kökü odur.
+- VPS host/IP uydurma.
 
 ## Proje bağlantısı
 - GitHub (public pack): https://github.com/okedidirkedi/sohbex-ed5-heavy
 - Canlı site: https://4krallik.com
 - Bu sohbet: https://grok.com/c/185287e9-d1c2-4899-88d5-9c2e74c7ed6a
-- Grok Bot köprü: PR/diff → `T:\PROJEM\4-krallık\`
+- Uygulayıcı: Grok Bot (selam) — PR/diff → `T:\PROJEM\4-krallık\`
 
-## Ortam (Taner — sen doğrudan yazamazsın)
+## Ortam (Taner — Heavy yazamaz)
 - Kök: `T:\PROJEM\4-krallık\`
 - Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 - Handoff: `T:\PROJEM\4-krallık\HANDOFF-HEAVY.md` (yedek: `T:\PROJEM\HANDOFF-HEAVY.md`)
@@ -42,11 +44,11 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 2. `/play` SSR Pixi fix → thin `page.tsx` + `PlayPageClient.tsx` (`ssr:false`).
 3. CC Live Generator / HUMAN·ADULT debug kaldırıldı.
 4. PR #2 Wine: auth **önce** `engine.init`; DPR soft-cap 1.25; `webglcontextlost`; `MAX_EAGER_ZONE_CHUNKS` 16.
-5. Pack docs + `src/lib/sohbex-clan.ts` → 4 Krallık / `/cc` köprüsü. Kullanıcı yüzü stringleri Bot Taner’da uygular.
+5. Pack docs + `src/lib/sohbex-clan.ts` → 4 Krallık / `/cc` köprüsü. Kullanıcı yüzü stringleri Grok Bot (selam) Taner’da uygular.
 
 ## Sıradaki
-1. Bot: canlı `HANDOFF-HEAVY.md` oku; PR #5 + kalan yüzeyi `T:\PROJEM\4-krallık\` altına uygula; Next restart.
-2. Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
+1. Grok Bot (selam): canlı `HANDOFF-HEAVY.md` oku; PR #5 + kalan yüzeyi `T:\PROJEM\4-krallık\` altına uygula; Next restart.
+2. Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj` (VPS gerekirse Bot; host uydurma)
 3. Enter-world E2E teşhis/fix (Aw Snap kalırsa) — Taner runtime.
 4. HUD Yamato polish yalnızca ayrı prompt ile.
 
@@ -63,7 +65,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 - `src/lib/sohbex-clan.ts` (storage key `sohbex.selectedClan` — değiştirme)
 
 ## Çıktı formatı (köprü — zorunlu)
-Heavy Windows diskine yazamaz. Komutta üret:
+Heavy Windows diskine yazamaz. Grok Bot (selam) uygular. Komutta üret:
 1. Net plan
 2. Dosya/tablo
 3. Unified diff veya SQL/JSON
