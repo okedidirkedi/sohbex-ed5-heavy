@@ -2,24 +2,24 @@
 
 import { useEffect, useState } from "react";
 
-/** SohbeX / Klan Savaşları about button + modal under the Yamato login card. */
+/** 4 Krallık about button + modal under the Yamato login card. */
 
 const PILLARS = [
   {
-    title: "Klan savaşı",
-    body: "Dört büyük klan — Kızıl Sancak, Gümüş Bozkır, Mavi Liman, Demir Vadi — toprak, geçit ve itibar için sürekli çekişir. Zafer tek düelloda değil; sefer, lojistik ve ittifakta ölçülür.",
+    title: "Krallık savaşı",
+    body: "Dört krallık — Kızıl Sancak, Gümüş Bozkır, Mavi Liman, Demir Vadi — toprak, geçit ve itibar için durmaksızın çekişir. Zafer tek düelloda değil; sefer, lojistik ve ittifakta ölçülür.",
   },
   {
     title: "Klasik grind + PvP",
-    body: "Gündüz tarla ve zindan, gece sınır baskını. Karakterini büyüt, klanına güç kat; açık dünyada risk her zaman masada.",
+    body: "Gündüz tarla ve zindan, gece sınır baskını. Karakterini büyüt, krallığına güç kat. Açık dünyada risk her zaman masada.",
   },
   {
     title: "Dört sınıf",
-    body: "Savaşçı, Büyücü, Okçu ve Şifacı. Her sınıfın rolü net; klan savaşında kombine güç şart.",
+    body: "Savaşçı, Büyücü, Okçu ve Şifacı. Her sınıfın rolü net; krallık savaşında kombine güç şart.",
   },
   {
-    title: "Orijinal SohbeX dünyası",
-    body: "Metin2 / Knight Online hissi — tempo, klan ve grind fantazisi — ama isimler, topraklar ve sistemler tamamen SohbeX’e ait.",
+    title: "Orijinal dünya",
+    body: "Tempo ve açık dünya PvP hissi tanıdık gelir. İsimler, topraklar ve sistemler yalnızca 4 Krallık’a aittir.",
   },
 ] as const;
 
@@ -91,7 +91,7 @@ export default function LoginGameAbout({ enabled }: { enabled: boolean }) {
                 className="mb-1 text-[10px] font-semibold uppercase tracking-[0.18em]"
                 style={{ color: "rgba(224,178,58,0.8)" }}
               >
-                SohbeX · Klan Savaşları
+                4 Krallık
               </p>
               <h2
                 id="login-game-about-title"
@@ -104,8 +104,9 @@ export default function LoginGameAbout({ enabled }: { enabled: boolean }) {
                 className="mt-2 text-sm leading-relaxed"
                 style={{ color: "rgba(232,220,196,0.9)" }}
               >
-                Klanını seç, efsaneni yaz. Hesap zorunlu bir MMO: grind, sınıf rolü ve
-                klan savaşı aynı masada. Misafir girişi yok — ilerleme hesabına bağlıdır.
+                Krallığını seç, efsaneni yaz. Hesap zorunlu bir MMO: grind, sınıf rolü
+                ve krallık savaşı aynı masada. Misafir girişi yok — ilerleme hesabına
+                bağlıdır.
               </p>
             </div>
             <div className="relative min-h-0 flex-1 space-y-3 overflow-y-auto px-5 pb-2">
@@ -130,9 +131,9 @@ export default function LoginGameAbout({ enabled }: { enabled: boolean }) {
                 </div>
               ))}
               <p className="text-xs leading-relaxed" style={{ color: "rgba(232,220,196,0.7)" }}>
-                Soldaki ve sağdaki klan kartlarına tıklayarak her klanın lore’unu,
-                ritüelini ve savaş tarzını okuyabilirsin. Karakter oluştururken klanını
-                seçersin; bu seçim dünyadaki aidiyetini belirler.
+                Soldaki ve sağdaki kartlardan her krallığın yeminini, ritüelini ve
+                savaş tarzını oku. Karakter oluştururken krallığını seçersin; bu seçim
+                aidiyetini kilitler.
               </p>
             </div>
             <div
