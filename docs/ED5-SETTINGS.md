@@ -1,4 +1,4 @@
-# SohbeX ED5 — kilit ayarlar (Heavy uygular)
+# 4 Krallık ED5 — kilit ayarlar (Heavy uygular)
 
 Parez “ayar yap / bağla / düzelt” dediğinde bu tabloyu bozmadan uygula.
 
@@ -24,14 +24,16 @@ Parez “ayar yap / bağla / düzelt” dediğinde bu tabloyu bozmadan uygula.
 ## UI / marka
 | Ayar | Değer |
 |------|--------|
-| Oyun adı | **Klan Savaşları** (SohbeX) |
-| Login pin | `SOHBEX_YAMATO_LOGIN` (public-config İngilizce default’u ezer) |
-| Login | Yamato panel, klan rayları, “Oyun hakkında”, üstte ortalı başlık |
+| Oyun adı | **4 Krallık** |
+| Login pin | `SOHBEX_YAMATO_LOGIN` (internal pin adı; public-config İngilizce default’u ezer) |
+| Login | Yamato panel, krallık rayları, “Oyun hakkında”, üstte ortalı başlık |
 | CharSelect / Create | rpgmmo / Yamato gold; Live Generator + HUMAN/ADULT debug **yok** |
 | Tema rengi | gold; cyan yok |
 | Dil | Türkçe metinler tercih |
+| Fraksiyon dili | **krallık** (klan değil) |
+| Dört krallık | Kızıl Sancak, Gümüş Bozkır, Mavi Liman, Demir Vadi |
 
-## Play / Aw Snap mitigations (PR #2 — korunacak)
+## Play / Aw Snap (PR #2 — korunacak)
 | Ayar | Değer |
 |------|--------|
 | `/play` | thin `page.tsx` + `PlayPageClient.tsx` `dynamic(..., { ssr:false })` |
@@ -39,7 +41,7 @@ Parez “ayar yap / bağla / düzelt” dediğinde bu tabloyu bozmadan uygula.
 | `MAX_EAGER_ZONE_CHUNKS` | **16** (36 değil) |
 | DPR soft-cap | **1.25** |
 | `webglcontextlost` | handler var |
-| Play splash | “Klan Savaşları / Dünyaya bağlanılıyor…” |
+| Play splash | “4 Krallık / Dünyaya bağlanılıyor…” |
 
 ## Akış (E2E)
 `Login` → `/clan-select.html` → `/cc` → **Dünyaya Gir** → `/play?character=...`
@@ -48,3 +50,4 @@ Parez “ayar yap / bağla / düzelt” dediğinde bu tabloyu bozmadan uygula.
 - Tam HUD rewrite (Parez ayrıca istemedikçe)
 - Metin2/KO asset veya isim klonu
 - Guest’i geri açmak
+- Storage key `sohbex.selectedClan` (compat)
