@@ -7,6 +7,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 ## Kaynak
 - Canlı kutu: **Taner Windows PC** (Wine ED5)
 - Klasör: `T:\PROJEM\4-krallık\`
+- Studio: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 - Pack köprü: https://github.com/okedidirkedi/sohbex-ed5-heavy
 - Next `:3000` · game-server `:3001` · local JWT · `DB_MODE=pglite` · **pnpm**
 - Heavy Taner diskine yazamaz. Bot PR/diff’i `T:\PROJEM\4-krallık\` altına uygular.
@@ -19,6 +20,7 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 
 ## Ortam (Taner — sen doğrudan yazamazsın)
 - Kök: `T:\PROJEM\4-krallık\`
+- Studio proje: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
 - **pnpm** (npm install monorepo’da yasak)
 - Guest **yasak**
 
@@ -37,8 +39,9 @@ SohbeX / Klan Savaşları ürün adı değildir — unut.
 
 ## Sıradaki
 1. Bot: PR #5 + kalan yüzey stringlerini `T:\PROJEM\4-krallık\` altına uygula, Next restart.
-2. Enter-world E2E teşhis/fix (Aw Snap kalırsa) — Taner runtime.
-3. HUD Yamato polish yalnızca ayrı prompt ile.
+2. Studio açılışı: `T:\PROJEM\4-krallık\4-krallık.ed5proj`
+3. Enter-world E2E teşhis/fix (Aw Snap kalırsa) — Taner runtime.
+4. HUD Yamato polish yalnızca ayrı prompt ile.
 
 ## Önemli dosyalar (köke göre)
 - `src/app/login/page.tsx`
